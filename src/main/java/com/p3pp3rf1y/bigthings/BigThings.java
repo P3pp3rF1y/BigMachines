@@ -3,6 +3,7 @@ package com.p3pp3rf1y.bigthings;
 import com.p3pp3rf1y.bigthings.handler.ConfigurationHandler;
 import com.p3pp3rf1y.bigthings.proxy.IProxy;
 import com.p3pp3rf1y.bigthings.reference.Reference;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -20,6 +21,7 @@ public class BigThings {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
     }
 
     @Mod.EventHandler

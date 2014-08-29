@@ -19,6 +19,7 @@ public class ConfigurationHandler {
 
         if (configuration == null) {
             configuration = new Configuration(configFile);
+            loadConfiguration();
         }
     }
 
@@ -29,7 +30,7 @@ public class ConfigurationHandler {
         }
     }
 
-    public void loadConfiguration() {
+    private static void loadConfiguration() {
 
         machineSpeed = configuration.get(Configuration.CATEGORY_GENERAL, "machineSpeed", 1.0, "machine speed multiplier").getDouble(1.0);
 
