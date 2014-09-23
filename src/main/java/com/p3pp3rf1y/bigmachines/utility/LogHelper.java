@@ -1,13 +1,11 @@
-package com.p3pp3rf1y.bigthings.utility;
+package com.p3pp3rf1y.bigmachines.utility;
 
-import com.p3pp3rf1y.bigthings.reference.Reference;
+import com.p3pp3rf1y.bigmachines.reference.Reference;
 import cpw.mods.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
 
-/**
- * Created by jjanecek on 8/29/2014.
- */
-public class LogHelper {
+public class LogHelper
+{
     public static void log(Level logLevel, Object object)
     {
         FMLLog.log(Reference.MOD_NAME, logLevel, String.valueOf(object));

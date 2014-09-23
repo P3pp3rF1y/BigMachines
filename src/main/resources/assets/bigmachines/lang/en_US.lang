@@ -1,0 +1,12 @@
+# Keys
+keys.bigmachines.category=Big Things
+keys.bigmachines.empower=Empower
+
+# Creative Tabs
+itemGroup.bigmachines=Big Things
+
+# Items
+item.bigmachines:wrench.name=Big Wrench!
+
+# Blocks
+tile.bigmachines:pulverizerModule.name=Pulverizer Module
