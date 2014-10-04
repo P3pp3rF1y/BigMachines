@@ -22,7 +22,7 @@ public class BlockBigMachines extends Block
         this(Material.iron);
     }
 
-    @Override
+/*    @Override
     public String getUnlocalizedName()
     {
         return String.format("tile.%s:%s", Reference.MOD_ID.toLowerCase(), getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
@@ -33,7 +33,7 @@ public class BlockBigMachines extends Block
     public void registerBlockIcons(IIconRegister iconRegister)
     {
         blockIcon = iconRegister.registerIcon(getUnwrappedUnlocalizedName(this.getUnlocalizedName()));
-    }
+    }*/
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
     {

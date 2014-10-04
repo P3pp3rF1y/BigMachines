@@ -10,3 +10,7 @@ item.bigmachines:wrench.name=Big Wrench!
 
 # Blocks
 tile.bigmachines:pulverizerModule.name=Pulverizer Module
+tile.bigmachines:furnaceModule.name=Furnace Module
+
+# Tooltips
+tooltip.bigmachines:none=None
