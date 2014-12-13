@@ -2,9 +2,9 @@ package com.p3pp3rf1y.beefcore.multiblock.rectangular;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import erogenousbeef.core.common.CoordTriplet;
-import erogenousbeef.core.multiblock.MultiblockControllerBase;
-import erogenousbeef.core.multiblock.MultiblockValidationException;
+import com.p3pp3rf1y.beefcore.common.CoordTriplet;
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockControllerBase;
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockValidationException;
 
 public abstract class RectangularMultiblockControllerBase extends
 		MultiblockControllerBase {
