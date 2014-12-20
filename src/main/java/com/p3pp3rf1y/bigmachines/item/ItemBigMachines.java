@@ -13,7 +13,7 @@ public class ItemBigMachines extends Item
     public ItemBigMachines()
     {
         super();
-        this.setCreativeTab(CreativeTabBigMachines.BIG_THINGS_TAB);
+        this.setCreativeTab(CreativeTabBigMachines.BIG_MACHINES_TAB);
     }
 
     @Override

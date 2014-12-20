@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 public class CreativeTabBigMachines
 {
-    public static final CreativeTabs BIG_THINGS_TAB = new CreativeTabs(Reference.MOD_ID.toLowerCase())
+    public static final CreativeTabs BIG_MACHINES_TAB = new CreativeTabs(Reference.MOD_ID.toLowerCase())
     {
         @Override
         public Item getTabIconItem()
