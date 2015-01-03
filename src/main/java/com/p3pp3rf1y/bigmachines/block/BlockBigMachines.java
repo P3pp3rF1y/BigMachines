@@ -17,11 +17,6 @@ public class BlockBigMachines extends Block
         this.setCreativeTab(CreativeTabBigMachines.BIG_MACHINES_TAB);
     }
 
-    public BlockBigMachines()
-    {
-        this(Material.iron);
-    }
-
     @Override
     public String getUnlocalizedName()
     {

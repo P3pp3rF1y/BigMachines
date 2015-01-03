@@ -6,48 +6,47 @@ import org.apache.logging.log4j.Level;
 
 public class LogHelper
 {
-    public static void log(Level logLevel, Object object)
-    {
-        FMLLog.log(Reference.MOD_NAME, logLevel, String.valueOf(object));
+    public static void log(Level logLevel, String format, Object... object) {
+        FMLLog.log(Reference.MOD_NAME, logLevel, format, object);
     }
 
-    public static void all(Object object)
+    public static void all(String format, Object... object)
     {
-        log(Level.ALL, object);
+        log(Level.ALL, format, object);
     }
 
-    public static void debug(Object object)
+    public static void debug(String format, Object... object)
     {
-        log(Level.DEBUG, object);
+        log(Level.DEBUG, format, object);
     }
 
-    public static void error(Object object)
+    public static void error(String format, Object... object)
     {
-        log(Level.ERROR, object);
+        log(Level.ERROR, format, object);
     }
 
-    public static void fatal(Object object)
+    public static void fatal(String format, Object... object)
     {
-        log(Level.FATAL, object);
+        log(Level.FATAL, format, object);
     }
 
-    public static void info(Object object)
+    public static void info(String format, Object... object)
     {
-        log(Level.INFO, object);
+        log(Level.INFO, format, object);
     }
 
-    public static void off(Object object)
+    public static void off(String format, Object... object)
     {
-        log(Level.OFF, object);
+        log(Level.OFF, format, object);
     }
 
-    public static void trace(Object object)
+    public static void trace(String format, Object... object)
     {
-        log(Level.TRACE, object);
+        log(Level.TRACE, format, object);
     }
 
-    public static void warn(Object object)
+    public static void warn(String format, Object... object)
     {
-        log(Level.WARN, object);
+        log(Level.WARN, format, object);
     }
 }
