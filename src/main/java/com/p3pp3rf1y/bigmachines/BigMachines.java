@@ -1,5 +1,6 @@
 package com.p3pp3rf1y.bigmachines;
 
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockServerTickHandler;
 import com.p3pp3rf1y.bigmachines.client.handler.KeyInputEventHandler;
 import com.p3pp3rf1y.bigmachines.handler.ConfigurationHandler;
 import com.p3pp3rf1y.bigmachines.handler.GuiHandler;
@@ -51,6 +52,8 @@ public class BigMachines
     {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+
+        FMLCommonHandler.instance().bus().register(new MultiblockServerTickHandler());
 
         Recipes.init();
     }
