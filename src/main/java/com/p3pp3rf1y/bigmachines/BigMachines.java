@@ -1,5 +1,7 @@
 package com.p3pp3rf1y.bigmachines;
 
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockClientTickHandler;
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockEventHandler;
 import com.p3pp3rf1y.beefcore.multiblock.MultiblockServerTickHandler;
 import com.p3pp3rf1y.bigmachines.client.handler.KeyInputEventHandler;
 import com.p3pp3rf1y.bigmachines.handler.ConfigurationHandler;
@@ -17,6 +19,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraftforge.common.MinecraftForge;
 
 //TODO: add pulverizer block texture / test
 //TODO: test creative tab including it's translated name
@@ -32,11 +35,16 @@ public class BigMachines
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static IProxy proxy;
 
+    private MultiblockEventHandler multiblockEventHandler;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler()); //TODO: should this be here - take a look at EE3 cod
+
+        multiblockEventHandler = new MultiblockEventHandler();
+        MinecraftForge.EVENT_BUS.register(multiblockEventHandler);
 
         proxy.registerKeyBindings();
 
@@ -53,7 +61,7 @@ public class BigMachines
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 
-        FMLCommonHandler.instance().bus().register(new MultiblockServerTickHandler());
+        proxy.registerTickHandlers();
 
         Recipes.init();
     }

@@ -1,11 +1,14 @@
 package com.p3pp3rf1y.bigmachines.multiblock;
 
+import com.p3pp3rf1y.beefcore.common.CoordTriplet;
 import com.p3pp3rf1y.beefcore.multiblock.IMultiblockPart;
 import com.p3pp3rf1y.beefcore.multiblock.MultiblockControllerBase;
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockValidationException;
 import com.p3pp3rf1y.beefcore.multiblock.rectangular.RectangularMultiblockControllerBase;
 import com.p3pp3rf1y.bigmachines.tileentity.IActivateable;
 import com.p3pp3rf1y.bigmachines.utility.LogHelper;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
@@ -229,6 +232,23 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
 
         return sb.toString();
     }
+
+    @Override
+    protected void isBlockGoodForInterior(World world, int x, int y, int z) throws MultiblockValidationException {
+        // Air is ok
+        if(world.isAirBlock(x, y, z)) { return; }
+
+        //Block block = world.getBlock(x, y, z);
+        //int metadata = world.getBlockMetadata(x,y,z);
+
+        //TODO: add code for modules
+        //TODO: add code for upgrades
+
+
+        // Everything else, gtfo
+        throw new MultiblockValidationException(String.format("%d, %d, %d is invalid for a turbine interior. Only rotor parts, metal blocks and empty space are allowed.", x, y, z));
+    }
+
 }
 
 
