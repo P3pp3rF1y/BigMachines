@@ -1,6 +1,6 @@
 package com.p3pp3rf1y.bigmachines.inventory;
 
-import com.p3pp3rf1y.bigmachines.tileentity.TileEntityFurnaceModule;
+import com.p3pp3rf1y.bigmachines.tileentity.modules.TileEntityFurnaceModule;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

@@ -238,13 +238,6 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
         // Air is ok
         if(world.isAirBlock(x, y, z)) { return; }
 
-        //Block block = world.getBlock(x, y, z);
-        //int metadata = world.getBlockMetadata(x,y,z);
-
-        //TODO: add code for modules
-        //TODO: add code for upgrades
-
-
         // Everything else, gtfo
         throw new MultiblockValidationException(String.format("%d, %d, %d is invalid for a turbine interior. Only rotor parts, metal blocks and empty space are allowed.", x, y, z));
     }

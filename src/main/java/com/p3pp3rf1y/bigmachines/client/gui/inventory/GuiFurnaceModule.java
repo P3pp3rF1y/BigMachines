@@ -2,12 +2,9 @@ package com.p3pp3rf1y.bigmachines.client.gui.inventory;
 
 import com.p3pp3rf1y.bigmachines.inventory.ContainerFurnaceModule;
 import com.p3pp3rf1y.bigmachines.reference.Textures;
-import com.p3pp3rf1y.bigmachines.tileentity.TileEntityFurnaceModule;
+import com.p3pp3rf1y.bigmachines.tileentity.modules.TileEntityFurnaceModule;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 public class GuiFurnaceModule extends GuiContainer

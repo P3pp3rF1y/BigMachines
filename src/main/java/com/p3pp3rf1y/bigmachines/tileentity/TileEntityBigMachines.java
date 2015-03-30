@@ -10,6 +10,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityBigMachines extends TileEntity
 {
+    //TODO:move saving of NBT to appropriate place
+
     @Override
     public Packet getDescriptionPacket()
     {

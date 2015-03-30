@@ -1,9 +1,7 @@
-package com.p3pp3rf1y.bigmachines.tileentity;
+package com.p3pp3rf1y.bigmachines.tileentity.modules;
 
-import com.p3pp3rf1y.bigmachines.block.BlockFurnaceModule;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -11,10 +9,8 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-public class TileEntityFurnaceModule extends TileEntityBigMachines implements IInventory
+public class TileEntityFurnaceModule extends TileEntityMachinePartModule implements IInventory
 {
-    //TODO: figure out if ISidedInventory should be used here
-
     public static final int INVENTORY_SIZE = 2;
     public static final int INPUT_INVENTORY_INDEX = 0;
     public static final int OUTPUT_INVENTORY_INDEX = 1;

@@ -1,6 +1,7 @@
-package com.p3pp3rf1y.bigmachines.block;
+package com.p3pp3rf1y.bigmachines.block.modules;
 
 import cofh.core.render.IconRegistry;
+import com.p3pp3rf1y.bigmachines.block.BlockBigMachines;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;

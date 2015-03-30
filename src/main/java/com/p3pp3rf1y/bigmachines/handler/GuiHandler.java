@@ -3,7 +3,7 @@ package com.p3pp3rf1y.bigmachines.handler;
 import com.p3pp3rf1y.bigmachines.client.gui.inventory.GuiFurnaceModule;
 import com.p3pp3rf1y.bigmachines.inventory.ContainerFurnaceModule;
 import com.p3pp3rf1y.bigmachines.reference.GUIs;
-import com.p3pp3rf1y.bigmachines.tileentity.TileEntityFurnaceModule;
+import com.p3pp3rf1y.bigmachines.tileentity.modules.TileEntityFurnaceModule;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

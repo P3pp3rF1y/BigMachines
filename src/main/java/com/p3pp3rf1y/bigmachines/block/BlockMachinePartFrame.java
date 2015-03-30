@@ -5,7 +5,7 @@ import com.p3pp3rf1y.bigmachines.creativetab.CreativeTabBigMachines;
 import com.p3pp3rf1y.bigmachines.multiblock.MultiblockMachine;
 import com.p3pp3rf1y.bigmachines.reference.Textures;
 import com.p3pp3rf1y.bigmachines.tileentity.TileEntityMachinePartBase;
-import com.p3pp3rf1y.bigmachines.tileentity.TileEntityMachinePartStandard;
+import com.p3pp3rf1y.bigmachines.tileentity.TileEntityMachinePartFrame;
 import com.p3pp3rf1y.bigmachines.utility.DirectionHelper;
 import com.p3pp3rf1y.bigmachines.utility.TileEntityHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Random;
 
 //TODO: come up with better name than Frame
-public class BlockMachineFramePart extends BlockBigMachines implements ITileEntityProvider {
+public class BlockMachinePartFrame extends BlockBigMachines implements ITileEntityProvider {
 
     public static final int METADATA_HOUSING = 0;
     public static final int METADATA_CONTROLLER = 1;
@@ -63,7 +63,7 @@ public class BlockMachineFramePart extends BlockBigMachines implements ITileEnti
     private IIcon[] _icons = new IIcon[_subBlocks.length];
     private IIcon[] _subIcons = new IIcon[_subIconNames.length];
 
-    public BlockMachineFramePart(Material material) {
+    public BlockMachinePartFrame(Material material) {
         super(material);
 
         setStepSound(soundTypeMetal);
@@ -203,7 +203,7 @@ public class BlockMachineFramePart extends BlockBigMachines implements ITileEnti
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        return new TileEntityMachinePartStandard();
+        return new TileEntityMachinePartFrame();
     }
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighborBlock) {

@@ -1,21 +1,20 @@
 package com.p3pp3rf1y.bigmachines.tileentity;
 
 import com.p3pp3rf1y.beefcore.multiblock.MultiblockValidationException;
-import com.p3pp3rf1y.bigmachines.block.BlockMachineFramePart;
+import com.p3pp3rf1y.bigmachines.block.BlockMachinePartFrame;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 
-public class TileEntityMachinePartStandard extends TileEntityMachinePartBase {
+public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
 
-    public TileEntityMachinePartStandard() {
+    public TileEntityMachinePartFrame() {
         super();
     }
 
     @Override
     public void isGoodForFrame() throws MultiblockValidationException {
-        if(getBlockMetadata() != BlockMachineFramePart.METADATA_HOUSING) {
+        if(getBlockMetadata() != BlockMachinePartFrame.METADATA_HOUSING) {
             throw new MultiblockValidationException(String.format("%d, %d, %d - only turbine housing may be used as part of the turbine's frame", xCoord, yCoord, zCoord));
         }
     }
@@ -34,7 +33,7 @@ public class TileEntityMachinePartStandard extends TileEntityMachinePartBase {
 
     @Override
     public void isGoodForInterior() throws MultiblockValidationException {
-        if(getBlockMetadata() != BlockMachineFramePart.METADATA_HOUSING) {
+        if(getBlockMetadata() != BlockMachinePartFrame.METADATA_HOUSING) {
             throw new MultiblockValidationException(String.format("%d, %d, %d - this part is not valid for the interior of a turbine", xCoord, yCoord, zCoord));
         }
     }
@@ -72,7 +71,7 @@ public class TileEntityMachinePartStandard extends TileEntityMachinePartBase {
     @Override
     public void onMachineActivated() {
         // Re-render controller as active state has changed
-        if(worldObj.isRemote && getBlockMetadata() == BlockMachineFramePart.METADATA_CONTROLLER) {
+        if(worldObj.isRemote && getBlockMetadata() == BlockMachinePartFrame.METADATA_CONTROLLER) {
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
     }
@@ -80,7 +79,7 @@ public class TileEntityMachinePartStandard extends TileEntityMachinePartBase {
     @Override
     public void onMachineDeactivated() {
         // Re-render controller as active state has changed
-        if(worldObj.isRemote && getBlockMetadata() == BlockMachineFramePart.METADATA_CONTROLLER) {
+        if(worldObj.isRemote && getBlockMetadata() == BlockMachinePartFrame.METADATA_CONTROLLER) {
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
         }
     }
