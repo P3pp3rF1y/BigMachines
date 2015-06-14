@@ -1,6 +1,9 @@
 package com.p3pp3rf1y.bigmachines.block;
 
 import com.p3pp3rf1y.beefcore.common.CoordTriplet;
+import com.p3pp3rf1y.beefcore.multiblock.IMultiblockPart;
+import com.p3pp3rf1y.beefcore.multiblock.MultiblockControllerBase;
+import com.p3pp3rf1y.bigmachines.BigMachines;
 import com.p3pp3rf1y.bigmachines.creativetab.CreativeTabBigMachines;
 import com.p3pp3rf1y.bigmachines.multiblock.MultiblockMachine;
 import com.p3pp3rf1y.bigmachines.reference.Textures;
@@ -11,7 +14,6 @@ import com.p3pp3rf1y.bigmachines.utility.TileEntityHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,6 +24,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -31,7 +34,7 @@ import java.util.List;
 import java.util.Random;
 
 //TODO: come up with better name than Frame
-public class BlockMachinePartFrame extends BlockBigMachines implements ITileEntityProvider {
+public class BlockMachinePartFrame extends BlockContainerBigMachines {
 
     public static final int METADATA_HOUSING = 0;
     public static final int METADATA_CONTROLLER = 1;
@@ -59,6 +62,9 @@ public class BlockMachinePartFrame extends BlockBigMachines implements ITileEnti
             "controller.idle",
             "controller.active",
     };
+
+    public static boolean isHousing(int metadata) { return metadata == METADATA_HOUSING; }
+    public static boolean isController(int metadata) { return metadata == METADATA_CONTROLLER; }
 
     private IIcon[] _icons = new IIcon[_subBlocks.length];
     private IIcon[] _subIcons = new IIcon[_subIconNames.length];
@@ -232,8 +238,43 @@ public class BlockMachinePartFrame extends BlockBigMachines implements ITileEnti
             return false;
         }
 
-        //TODO: implement onBlockActivated
-        //TODO: add wrench support
+        int metadata = world.getBlockMetadata(x, y, z);
+        TileEntity te = world.getTileEntity(x, y, z);
+        IMultiblockPart part = null;
+        MultiblockControllerBase controller = null;
+
+        if(te instanceof IMultiblockPart) {
+            part = (IMultiblockPart)te;
+            controller = part.getMultiblockController();
+        }
+
+        if(isHousing(metadata)) {
+            // If the player's hands are empty and they rightclick on a multiblock, they get a
+            // multiblock-debugging message if the machine is not assembled.
+            if(player.getCurrentEquippedItem() == null) {
+                if(controller != null) {
+                    Exception e = controller.getLastValidationException();
+                    if(e != null) {
+                        player.addChatMessage(new ChatComponentText(e.getMessage()));
+                        return true;
+                    }
+                }
+                else {
+                    player.addChatMessage(new ChatComponentText("Block is not connected to a reactor. This could be due to lag, or a bug. If the problem persists, try breaking and re-placing the block.")); //TODO Localize
+                    return true;
+                }
+            }
+
+            // If nonempty, or there was no error, just fall through
+            return false;
+        }
+
+        // Don't open the controller GUI if the reactor isn't assembled
+        if(isController(metadata) && (controller == null || !controller.isAssembled())) { return false; }
+
+        if(!world.isRemote) {
+            player.openGui(BigMachines.instance, 0, world, x, y, z);
+        }
         return true;
     }
 

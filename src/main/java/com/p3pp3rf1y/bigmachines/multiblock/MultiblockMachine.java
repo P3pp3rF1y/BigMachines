@@ -111,7 +111,7 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
     @Override
     protected int getMinimumNumberOfBlocksForAssembledMachine() {
         // 3*3*3 housing with a single machine module inside
-        return 26;
+        return 27;
     }
 
     @Override

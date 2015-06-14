@@ -10,10 +10,8 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockFurnaceModule extends BlockMachineModule implements ITileEntityProvider
+public class BlockFurnaceModule extends BlockMachineModule
 {
-    private static boolean updatingBlock;
-
     public BlockFurnaceModule() {
         super();
         this.setBlockName("furnaceModule");
@@ -28,24 +26,5 @@ public class BlockFurnaceModule extends BlockMachineModule implements ITileEntit
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
     {
         return new TileEntityFurnaceModule();
-    }
-
-    @Override
-    public void breakBlock (World world, int x, int y, int z, Block block, int meta)
-    {
-        if(hasTileEntity(meta))
-        {
-            world.removeTileEntity(x, y, z);
-        }
-
-    }
-
-    @Override
-    public boolean onBlockEventReceived(World world, int x, int y, int z, int eventId, int eventData)
-    {
-        super.onBlockEventReceived(world, x, y, z, eventId, eventData);
-        TileEntity tileentity = world.getTileEntity(x, y, z);
-        return tileentity != null ? tileentity.receiveClientEvent(eventId, eventData) : false;
-
     }
 }

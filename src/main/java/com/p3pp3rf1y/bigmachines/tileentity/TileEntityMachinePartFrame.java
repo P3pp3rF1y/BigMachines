@@ -2,9 +2,14 @@ package com.p3pp3rf1y.bigmachines.tileentity;
 
 import com.p3pp3rf1y.beefcore.multiblock.MultiblockValidationException;
 import com.p3pp3rf1y.bigmachines.block.BlockMachinePartFrame;
+import com.p3pp3rf1y.bigmachines.client.gui.inventory.GuiFurnaceModule;
+import com.p3pp3rf1y.bigmachines.inventory.ContainerBigMachines;
+import com.p3pp3rf1y.bigmachines.inventory.ContainerFurnaceModule;
+import com.p3pp3rf1y.bigmachines.tileentity.modules.TileEntityFurnaceModule;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 
 public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
 
@@ -44,10 +49,9 @@ public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
             return null;
         }
 
-//TODO: add return of correct container when controller implemented, may not be slotless
-//        if(getBlockMetadata() == BlockMachineFramePart.METADATA_CONTROLLER) {
-//            return (Object)(new ContainerSlotless(getMachine(), inventoryPlayer.player));
-//        }
+        if(getBlockMetadata() == BlockMachinePartFrame.METADATA_CONTROLLER) {
+            return new ContainerFurnaceModule(inventoryPlayer, new TileEntityFurnaceModule());
+        }
 
         return null;
     }
@@ -59,10 +63,9 @@ public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
             return null;
         }
 
-//TODO: add controller Gui when implemented
-//        if(getBlockMetadata() == BlockTurbinePart.METADATA_CONTROLLER) {
-//            return new GuiTurbineController((Container)getContainer(inventoryPlayer), this);
-//        }
+        if(getBlockMetadata() == BlockMachinePartFrame.METADATA_CONTROLLER) {
+            return new GuiFurnaceModule(inventoryPlayer, new TileEntityFurnaceModule());
+        }
         return null;
     }
 

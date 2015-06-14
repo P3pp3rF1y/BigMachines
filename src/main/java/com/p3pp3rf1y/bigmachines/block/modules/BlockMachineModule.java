@@ -1,14 +1,14 @@
 package com.p3pp3rf1y.bigmachines.block.modules;
 
 import cofh.core.render.IconRegistry;
-import com.p3pp3rf1y.bigmachines.block.BlockBigMachines;
+import com.p3pp3rf1y.bigmachines.block.BlockContainerBigMachines;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
-public class BlockMachineModule extends BlockBigMachines
+public abstract class BlockMachineModule extends BlockContainerBigMachines
 {
     public BlockMachineModule() {
         super(Material.iron);
