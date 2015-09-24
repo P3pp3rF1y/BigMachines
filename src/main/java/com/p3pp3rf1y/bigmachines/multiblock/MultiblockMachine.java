@@ -190,7 +190,7 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
     // Network Serialization
     /**
      * Used when dispatching update packets from the server.
-     * @param buf ByteBuf into which the turbine's full status should be written
+     * @param buf ByteBuf into which the machine's full status should be written
      */
     public void serialize(ByteBuf buf) {
         //TODO: add code to serialize and MachineUpdateMessage that will use the data
@@ -198,7 +198,7 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
 
     /**
      * Used when a status packet arrives on the client.
-     * @param buf ByteBuf containing serialized turbine data
+     * @param buf ByteBuf containing serialized machine data
      */
     public void deserialize(ByteBuf buf) {
         //TODO: add code to deserialize
@@ -239,7 +239,7 @@ public class MultiblockMachine extends RectangularMultiblockControllerBase imple
         if(world.isAirBlock(x, y, z)) { return; }
 
         // Everything else, gtfo
-        throw new MultiblockValidationException(String.format("%d, %d, %d is invalid for a turbine interior. Only rotor parts, metal blocks and empty space are allowed.", x, y, z));
+        throw new MultiblockValidationException(String.format("%d, %d, %d is invalid for a machine interior. Only rotor parts, metal blocks and empty space are allowed.", x, y, z));
     }
 
 }

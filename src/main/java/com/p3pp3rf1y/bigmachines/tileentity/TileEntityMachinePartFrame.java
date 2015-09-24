@@ -20,7 +20,7 @@ public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
     @Override
     public void isGoodForFrame() throws MultiblockValidationException {
         if(getBlockMetadata() != BlockMachinePartFrame.METADATA_HOUSING) {
-            throw new MultiblockValidationException(String.format("%d, %d, %d - only turbine housing may be used as part of the turbine's frame", xCoord, yCoord, zCoord));
+            throw new MultiblockValidationException(String.format("%d, %d, %d - only machine frame may be used as part of the machine's frame", xCoord, yCoord, zCoord));
         }
     }
 
@@ -39,7 +39,7 @@ public class TileEntityMachinePartFrame extends TileEntityMachinePartBase {
     @Override
     public void isGoodForInterior() throws MultiblockValidationException {
         if(getBlockMetadata() != BlockMachinePartFrame.METADATA_HOUSING) {
-            throw new MultiblockValidationException(String.format("%d, %d, %d - this part is not valid for the interior of a turbine", xCoord, yCoord, zCoord));
+            throw new MultiblockValidationException(String.format("%d, %d, %d - this part is not valid for the interior of a machine", xCoord, yCoord, zCoord));
         }
     }
 

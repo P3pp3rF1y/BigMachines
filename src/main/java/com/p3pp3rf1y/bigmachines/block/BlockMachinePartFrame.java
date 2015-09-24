@@ -6,6 +6,7 @@ import com.p3pp3rf1y.beefcore.multiblock.MultiblockControllerBase;
 import com.p3pp3rf1y.bigmachines.BigMachines;
 import com.p3pp3rf1y.bigmachines.creativetab.CreativeTabBigMachines;
 import com.p3pp3rf1y.bigmachines.multiblock.MultiblockMachine;
+import com.p3pp3rf1y.bigmachines.reference.GUIs;
 import com.p3pp3rf1y.bigmachines.reference.Textures;
 import com.p3pp3rf1y.bigmachines.tileentity.TileEntityMachinePartBase;
 import com.p3pp3rf1y.bigmachines.tileentity.TileEntityMachinePartFrame;
@@ -189,7 +190,7 @@ public class BlockMachinePartFrame extends BlockContainerBigMachines {
                 dir = dirsToCheck[i];
 
                 Block neighborBlock = blockAccess.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-                // See if we're a turbine part
+                // See if we're a machine part
                 if(neighborBlock != myBlock) {
                     // One of these things is not like the others...
                     iconIdx = i;
@@ -260,7 +261,7 @@ public class BlockMachinePartFrame extends BlockContainerBigMachines {
                     }
                 }
                 else {
-                    player.addChatMessage(new ChatComponentText("Block is not connected to a reactor. This could be due to lag, or a bug. If the problem persists, try breaking and re-placing the block.")); //TODO Localize
+                    player.addChatMessage(new ChatComponentText("Block is not connected to a machine. This could be due to lag, or a bug. If the problem persists, try breaking and re-placing the block.")); //TODO Localize
                     return true;
                 }
             }
@@ -269,11 +270,12 @@ public class BlockMachinePartFrame extends BlockContainerBigMachines {
             return false;
         }
 
-        // Don't open the controller GUI if the reactor isn't assembled
+        // Don't open the controller GUI if the machine isn't assembled
         if(isController(metadata) && (controller == null || !controller.isAssembled())) { return false; }
 
         if(!world.isRemote) {
-            player.openGui(BigMachines.instance, 0, world, x, y, z);
+//TODO: change GUI from furnace to controller
+            player.openGui(BigMachines.instance, GUIs.FURNACE_MODULE.ordinal(), world, x, y, z);
         }
         return true;
     }

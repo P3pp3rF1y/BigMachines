@@ -11,5 +11,6 @@ public class Textures
     {
         private static final String GUI_SHEET_LOCATION = "textures/gui/";
         public static final ResourceLocation FURNACE_MODULE = ResourceLocationHelper.getResourceLocation(GUI_SHEET_LOCATION + "furnaceModule.png");
+        public static final ResourceLocation CONTROLLER = ResourceLocationHelper.getResourceLocation(GUI_SHEET_LOCATION + "controller.png");
     }
 }

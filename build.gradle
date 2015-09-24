@@ -22,7 +22,7 @@ group = "com.p3pp3rf1y.bigmachines" // http://maven.apache.org/guides/mini/guide
 archivesBaseName = "BigThings"
 
 minecraft {
-    version = "1.7.10-10.13.0.1208"
+    version = "1.7.10-10.13.4.1448-1.7.10"
 }
 
 dependencies {
